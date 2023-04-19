@@ -23,15 +23,20 @@ describe('My first Test Suite', function()
             const textVeg = $el.find('h4.product-name').text()
             if(textVeg.includes('Cashews'))
             {
-            cy.wrap($el).find('button').click() 
+                cy.wrap($el).find('button').click() 
             }
        
         })
+
+        // assert if logo text is correctly displayed
+        cy.get('.brand').should('have.text', 'GREENKART') 
+
+
         // cypress has an inbuild ability to resolve promisses between cypress methods implicitly but 
         // non-cypress methods needs to be handled explicitly using .then() method
         cy.get('.brand').then(function(logoelement)
         {
-        cy.log(logoelement.text())  // text() is not cypress command  
+            cy.log(logoelement.text())  // text() is not cypress command  
         }) 
         // cy.log(logo.text())
 
