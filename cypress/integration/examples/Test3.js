@@ -1,8 +1,8 @@
 //cypress - Spec
 //<reference types= "Cypress" />
-describe('My Second Test Suite', function()
+describe('My Third Test Suite', function()
 {
-    it('My FirstTest case', function(){
+    it('My ThirsTest case', function(){
 
         cy.visit("https://rahulshettyacademy.com/AutomationPractice/")
 
@@ -56,8 +56,6 @@ describe('My Second Test Suite', function()
         cy.get('[value="radio3"]').check().should('be.checked')
         cy.get('[value="radio2"]').should('not.be.checked')
 
-        
-    
     })
 
     
