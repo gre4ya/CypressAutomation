@@ -32,11 +32,33 @@ describe('My Second Test Suite', function()
             }
        
         })
+
         cy.get('#autocomplete').should('have.value','India')
+
+        // validating visible/invisible elements
+
+        cy.get('#displayed-text').should('be.visible')
+        cy.get('#hide-textbox').click()
+
+        cy.get('#displayed-text').should('not.be.visible')
+        cy.get('#show-textbox').click()
+
+        cy.get('#displayed-text').should('be.visible')
+
+
+
+        // Radio Buttons
+
+        cy.get('[value="radio1"]').should('not.be.checked')
+        cy.get('[value="radio2"]').should('not.be.checked')
+        cy.get('[value="radio3"]').should('not.be.checked')
+        cy.get('[value="radio2"]').check().should('be.checked')
+        cy.get('[value="radio3"]').check().should('be.checked')
+        cy.get('[value="radio2"]').should('not.be.checked')
+
+        
     
     })
 
-
-
-
+    
 })
