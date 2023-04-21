@@ -12,27 +12,36 @@ describe('My Fourth Test Suite', function()
         cy.get('#alertbtn').click()
         cy.get('[value="Confirm"]').click()
 
-        // ALERT
+// ALERT
 
         // here we caprure the promise and resolve it
          cy.on('window:alert',(str) =>
          {
             // Mocha
             expect(str).to.equal('Hello , share this practice page and share your knowledge')
-
          })
 
-
-
-         // CONFIRM
+// CONFIRM
 
          // here we caprure the promise and resolve it
          cy.on('window:confirm',(str) =>
          {
             // Mocha
             expect(str).to.equal('Hello , Are you sure you want to confirm?')
-
          })
+
+
+// Child window handling
+
+        cy.get('#opentab').invoke('removeAttr','target').click()    
+
+        // cy.url().should('include','qaclickacademy')
+
+
+// Browser navigation  
+
+        // cy.go('back')
+
 
     
     })
