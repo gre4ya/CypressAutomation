@@ -33,14 +33,14 @@ describe('My Fourth Test Suite', function()
 
 // Child window handling
 
-        cy.get('#opentab').invoke('removeAttr','target').click()    
+        cy.get('#opentab').invoke('removeAttr','target').click()  
 
-        // cy.url().should('include','qaclickacademy')
-
-
-// Browser navigation  
-
-        // cy.go('back')
+        // cy.origin('http://www.qaclickacademy.com', ()=>
+        //         {
+        //             cy.url().should('include','qaclickacademy')
+        //             cy.go('back')
+                
+        //         })  
 
 
     
