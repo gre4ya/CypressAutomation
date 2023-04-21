@@ -25,8 +25,14 @@ describe('My Nineth Test Suite', function(){
         cy.get('#inlineRadio3').should('be.disabled') // cy.get('#inlineRadio3').should('have.attr','disabled')
 
         cy.get('li[class="nav-item"]:nth-child(2) a').click()
-        
-        cy.selectProduct(this.data.itemName)
+
+        this.data.itemName.forEach(element => {
+            cy.selectProduct(element)
+        });
+
+        cy.get('a.btn-primary').click()
+
+
 
         
 
@@ -38,6 +44,4 @@ describe('My Nineth Test Suite', function(){
 
 
     })
-
-
 })

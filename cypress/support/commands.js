@@ -18,8 +18,6 @@ Cypress.Commands.add('selectProduct', (productName) => {
             if($el.text().includes(productName))
             cy.get('button.btn-info').eq(index).click()       
         })
-                   
-    cy.get('a.btn-primary').click()
 })
 
 //

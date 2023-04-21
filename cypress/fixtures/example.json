@@ -2,5 +2,5 @@
   "name": "Alex",
   "gender": "Male",
   "email": "Alex@test.com",
-  "itemName": "Blackberry"
+  "itemName": ["Blackberry", "iphone X", "Samsung", "Nokia Edge"]
 }
