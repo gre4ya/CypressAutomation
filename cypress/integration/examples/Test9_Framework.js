@@ -1,6 +1,7 @@
 
 import HomePage from '../pageObjects/HomePage'
 import ProductsPage from '../pageObjects/ProductsPage'
+import CheckoutPage from '../pageObjects/CheckoutPage'
 
 describe('My Nineth Test Suite', function(){
 
@@ -16,6 +17,7 @@ describe('My Nineth Test Suite', function(){
 
         const homePage = new HomePage()
         const productsPage = new ProductsPage()
+        const checkoutPage = new CheckoutPage()
 
         cy.visit('https://rahulshettyacademy.com/angularpractice/')
 
@@ -37,6 +39,17 @@ describe('My Nineth Test Suite', function(){
         });
 
         productsPage.getCheckoutButton().click()
+        let sum = 0
+        checkoutPage.listOfTotalPrices().each(($el, index, $list) => {
+
+                this.sum += parseInt($el.text().substring(3))
+            })
+
+            checkoutPage.totalPrice().then(function(price)
+            {
+                 expect(price).to.equal(sum)
+            })       
+
 
 
 
