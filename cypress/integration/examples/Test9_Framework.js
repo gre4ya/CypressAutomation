@@ -1,5 +1,7 @@
 
-import 'cypress-iframe'
+import HomePage from '../pageObjects/HomePage'
+import ProductsPage from '../pageObjects/ProductsPage'
+
 describe('My Nineth Test Suite', function(){
 
     before(function(){
@@ -11,26 +13,30 @@ describe('My Nineth Test Suite', function(){
     })
 
     it('Framework', function(){
+
+        const homePage = new HomePage()
+        const productsPage = new ProductsPage()
+
         cy.visit('https://rahulshettyacademy.com/angularpractice/')
 
-        cy.get('input[name="name"]:nth-child(2)').type(this.data.name)
-        cy.get('input[name="email"]').type(this.data.email)
-        cy.get('select').select(this.data.gender)
-        cy.get('input[name="name"]:nth-child(1)').should('have.value', this.data.name)
+        homePage.getNameInputBox().type(this.data.name)
+        homePage.getEmailInputBox().type(this.data.email)
+        homePage.getGender().select(this.data.gender)
+        homePage.getTwoWayDataBinding().should('have.value', this.data.name)
 
-        cy.get('input[name="name"]:nth-child(2)').should('have.attr','minlength','2') // minlength attribute validation
-        cy.get('input[name="name"]:nth-child(2)').should('have.attr','required')
-        cy.get('input[name="name"]:nth-child(2)').should('have.attr','type','text') // input type validation
+        homePage.getNameInputBox().should('have.attr','minlength','2') // minlength attribute validation
+        homePage.getNameInputBox().should('have.attr','required')
+        homePage.getNameInputBox().should('have.attr','type','text') // input type validation
 
-        cy.get('#inlineRadio3').should('be.disabled') // cy.get('#inlineRadio3').should('have.attr','disabled')
+        homePage.getEntrepreneur().should('be.disabled') // cy.get('#inlineRadio3').should('have.attr','disabled')
 
-        cy.get('li[class="nav-item"]:nth-child(2) a').click()
+        homePage.getShopTab().click()
 
         this.data.itemName.forEach(element => {
             cy.selectProduct(element)
         });
 
-        cy.get('a.btn-primary').click()
+        productsPage.getCheckoutButton().click()
 
 
 
