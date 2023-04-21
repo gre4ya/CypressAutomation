@@ -28,7 +28,7 @@ describe('My Third Test Suite', function()
 
             if($el.text()==='India')
             {
-                $el.click() 
+                cy.wrap($el).click() 
             }
        
         })
