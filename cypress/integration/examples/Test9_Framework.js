@@ -2,6 +2,7 @@
 import HomePage from '../pageObjects/HomePage'
 import ProductsPage from '../pageObjects/ProductsPage'
 import CheckoutPage from '../pageObjects/CheckoutPage'
+import PurchasePage from '../pageObjects/PurchasePage'
 
 describe('My Nineth Test Suite', function(){
 
@@ -14,10 +15,12 @@ describe('My Nineth Test Suite', function(){
     })
 
     it('Framework', function(){
+        Cypress.config('defaultCommandTimeout',8000)
 
         const homePage = new HomePage()
         const productsPage = new ProductsPage()
         const checkoutPage = new CheckoutPage()
+        const purchasePage = new PurchasePage()
 
         cy.visit('https://rahulshettyacademy.com/angularpractice/')
 
@@ -39,19 +42,39 @@ describe('My Nineth Test Suite', function(){
         });
 
         productsPage.getCheckoutButton().click()
-        let sum = 0
+
+        let sum = 0;
+
         checkoutPage.listOfTotalPrices().each(($el, index, $list) => {
+            sum += Number($el.text().match(/[0-9]+/)) // regex for digits only
+        })
 
-                this.sum += parseInt($el.text().substring(3))
-            })
+        checkoutPage.totalPrice().then(function(price){
+            let allPrice = parseInt(price.text().match(/[0-9]+/))
+            expect(allPrice).to.equal(sum)
+        }) 
+        
+        checkoutPage.checkoputButton().click()
 
-            checkoutPage.totalPrice().then(function(price)
-            {
-                 expect(price).to.equal(sum)
-            })       
+        purchasePage.deliveryLocationInputBox().type('India')
+        purchasePage.suggestionBox().click()
+        purchasePage.termAndConditionsCheckBox().click({force: true})
+        purchasePage.purchaseButton().click()
 
 
 
+        // purchasePage.confirmationSuccessMessage().then(function(text){
+        //     Cypress.$('a.close').remove()
+        //     let confirmMessage = text.text().trim()
+        //     cy.log(confirmMessage)
+        //     expect(confirmMessage).to.equal('Success! Thank you! Your order will be delivered in next few weeks :-).')
+        // })
+
+        // purchasePage.confirmationSuccessMessage().should('have.text', 'Success! Thank you! Your order will be delivered in next few weeks :-).')
+        purchasePage.confirmationSuccessMessage().then(function(text){
+            const confirmMessage = text.text()
+            expect(confirmMessage.includes('Success! Thank you! Your order will be delivered in next few weeks :-).')).to.be.true
+        })
 
         
 

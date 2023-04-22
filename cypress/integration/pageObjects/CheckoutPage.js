@@ -14,11 +14,7 @@ class CheckoutPage
     }
     totalPrice()
     {
-        cy.get('h3 strong').then(function(allPrice)
-        {
-         let fullPrice = parseInt(allPrice.text().substring(3))
-        })
-        return
+        return cy.get('h3 strong')
     }
 }
 
