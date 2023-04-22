@@ -8,7 +8,7 @@ describe('My Fourth Test Suite', function()
         // window:alert is an event that is fired when alert opens
         // so we fire the event through cypress to get the access to that alert
 
-        cy.visit("https://rahulshettyacademy.com/AutomationPractice/")
+        cy.visit(Cypress.env('url') + '/AutomationPractice/')
         cy.get('#alertbtn').click()
         cy.get('[value="Confirm"]').click()
 
@@ -30,7 +30,6 @@ describe('My Fourth Test Suite', function()
             expect(str).to.equal('Hello , Are you sure you want to confirm?')
          })
 
-
 // Child window handling
 
         cy.get('#opentab').invoke('removeAttr','target').click()  
@@ -41,12 +40,5 @@ describe('My Fourth Test Suite', function()
         //             cy.go('back')
                 
         //         })  
-
-
-    
     })
-
-
-
-
 })

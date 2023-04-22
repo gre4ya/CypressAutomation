@@ -8,9 +8,8 @@ describe('My Nineth Test Suite', function(){
 
     before(function(){
         // this code wil be executed once before all the tests in the block
-        cy.fixture('example').then(function(data)
-        {
-    this.data = data
+        cy.fixture('example').then(function(data){
+        this.data = data
         })
     })
 
@@ -22,7 +21,7 @@ describe('My Nineth Test Suite', function(){
         const checkoutPage = new CheckoutPage()
         const purchasePage = new PurchasePage()
 
-        cy.visit('https://rahulshettyacademy.com/angularpractice/')
+        cy.visit(Cypress.env('url') + '/angularpractice/')
 
         homePage.getNameInputBox().type(this.data.name)
         homePage.getEmailInputBox().type(this.data.email)
@@ -75,15 +74,5 @@ describe('My Nineth Test Suite', function(){
             const confirmMessage = text.text()
             expect(confirmMessage.includes('Success! Thank you! Your order will be delivered in next few weeks :-).')).to.be.true
         })
-
-        
-
-
-
-        
-
-        
-
-
     })
 })

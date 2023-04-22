@@ -4,7 +4,7 @@ describe('My Third Test Suite', function()
 {
     it('My ThirsTest case', function(){
 
-        cy.visit("https://rahulshettyacademy.com/AutomationPractice/")
+        cy.visit(Cypress.env('url') + '/AutomationPractice/')
 
 
         // CHECKBOXES
