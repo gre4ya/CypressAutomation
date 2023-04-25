@@ -14,8 +14,7 @@ describe('My Nineth Test Suite', function(){
     })
 
     it('Framework', function(){
-        Cypress.config('defaultCommandTimeout',8000)
-
+        
         const homePage = new HomePage()
         const productsPage = new ProductsPage()
         const checkoutPage = new CheckoutPage()
@@ -33,7 +32,7 @@ describe('My Nineth Test Suite', function(){
         homePage.getNameInputBox().should('have.attr','type','text') // input type validation
 
         homePage.getEntrepreneur().should('be.disabled') // cy.get('#inlineRadio3').should('have.attr','disabled')
-
+        Cypress.config('defaultCommandTimeout',8000)
         homePage.getShopTab().click()
 
         this.data.itemName.forEach(element => {
