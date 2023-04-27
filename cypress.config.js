@@ -34,3 +34,5 @@ module.exports = defineConfig({
 // npx cypress run --spec cypress/integration/examples/Test9_Framework.js --headed --browser chrome --env url="https://rahulshettyacademy.com"
 
 // npx cypress run --record --key ba97c6fd-344e-42e4-b82a-5eb0de0e6e01 --spec cypress/integration/examples/Test7.js --headed --browser chrome
+
+// npx cypress run --env tags="@Regression" --headed --browser chrome

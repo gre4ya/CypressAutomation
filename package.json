@@ -12,7 +12,8 @@
   "cypress-cucumber-preprocessor": {
     "json": {
       "enabled": true,
-      "output": "cypress/cucumberReports/results.json"
+      "output": "cypress/cucumberReports/results.json",
+      "formatter": "/Users/gre4ya/CypressAutomation/cucumber-json-formatter"
     }
   },
   "author": "",
@@ -21,7 +22,7 @@
     "cypress": "^12.9.0",
     "cypress-iframe": "^1.0.1",
     "mocha": "^10.1.0",
-    "multiple-cucumber-html-reporter": "^3.0.1"
+    "multiple-cucumber-html-reporter": "^3.3.0"
   },
   "dependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^15.1.5",

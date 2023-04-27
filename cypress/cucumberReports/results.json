@@ -1,0 +1,76 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "end-to-end-ecommerce-validation;ecommerce-product-delivery",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Ecommerce product delivery",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I open Ecommerce Page",
+            "result": {
+              "duration": 3252000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "When ",
+            "line": 5,
+            "name": "I add items to Cart",
+            "result": {
+              "duration": 5535000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "And ",
+            "line": 6,
+            "name": "Validate the total prices",
+            "result": {
+              "duration": 178000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 7,
+            "name": "Select the country submit and verify Thankyou",
+            "result": {
+              "duration": 7042000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          }
+        ],
+        "type": "scenario",
+        "tags": [
+          {
+            "line": 2,
+            "name": "@Regression"
+          }
+        ]
+      }
+    ],
+    "id": "end-to-end-ecommerce-validation",
+    "keyword": "Feature",
+    "line": 1,
+    "name": "End to end Ecommerce validation",
+    "uri": "cypress/integration/examples/BDD/ecommerce.feature"
+  }
+]
