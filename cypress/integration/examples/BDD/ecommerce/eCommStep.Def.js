@@ -26,7 +26,7 @@ When ('I add items to Cart', function(){
 })
 
 // And Validate the total prices
-When ('Validate the total prices', () => {
+When ('Validate the total prices', function(){
     let sum = 0;
     checkoutPage.listOfTotalPrices().each(($el, index, $list) => {
         sum += Number($el.text().match(/[0-9]+/)) // regex for digits only
@@ -38,7 +38,7 @@ When ('Validate the total prices', () => {
 })
 
 // Then Select the country submit and verify Thankyou
-Then ('Select the country submit and verify Thankyou', () => {
+Then ('Select the country submit and verify Thankyou', function(){
     checkoutPage.checkoputButton().click()
     purchasePage.deliveryLocationInputBox().type('India')
     purchasePage.suggestionBox().click()
@@ -58,7 +58,7 @@ When ('I fill the form details', function(dataTable){
 })
 
 // Then validate the forms behaviour
-Then ('validate the forms behaviour', () => {
+Then ('validate the forms behaviour', function(){
     homePage.getNameInputBox().should('have.attr','minlength','2')
     homePage.getNameInputBox().should('have.attr','required')
     homePage.getNameInputBox().should('have.attr','type','text')
@@ -66,6 +66,6 @@ Then ('validate the forms behaviour', () => {
 })
 
 // And select the Shop Page
-Then ('select the Shop Page', () => {
+Then ('select the Shop Page', function(){
     homePage.getShopTab().click()
 })
