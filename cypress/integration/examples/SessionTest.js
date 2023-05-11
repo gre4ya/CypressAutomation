@@ -1,5 +1,10 @@
+
+const neatCSV = require('neat-csv')
+let productName
+let orderNumber
+
 describe('JWT Session', ()=>{
-    it('is logged in throught local storage', () => {
+    it('is logged in throught local storage', async () => {
         cy.LoginAPI().then(function()
         {
             cy.visit("https://rahulshettyacademy.com/client", 
@@ -9,7 +14,11 @@ describe('JWT Session', ()=>{
                     window.localStorage.setItem('token', Cypress.env('token'))
                 }
             })
-
+            cy.get(".card-body b").eq(1).then(function(name) 
+            {
+                productName = name.text();
+            })
+                
             cy.get('.card-body button:last-of-type').eq(1).click();
             cy.get("[routerlink*='cart']").click();
             cy.contains('Checkout').click();
@@ -24,9 +33,26 @@ describe('JWT Session', ()=>{
             })
             cy.get(".action__submit").click();
             cy.wait(2000);
+            cy.get("label[class='ng-star-inserted']").then(function(order) 
+            {
+                orderNumber = order.text()
+                cy.log(orderNumber) // | 645d6572568c3e9fb169ff4a |
+            })
             cy.contains('CSV').click();
 
+            
+            cy.readFile(Cypress.config('fileServerFolder') + '/cypress/downloads/order-invoice_gre4ya.csv')
+            .then(async (text) =>
+            {
+                const csv = await neatCSV(text)
+                console.log(csv)
+                const actualProductCSV = csv[0]["Product Name"]
+                expect(productName).to.equal(actualProductCSV)
 
+                const actualOrderCSV = csv[0]["Invoice Number"]
+                expect(orderNumber).to.equal(actualOrderCSV)
+            })
+           
 
         })
     })
