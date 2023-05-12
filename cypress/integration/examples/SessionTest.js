@@ -34,9 +34,9 @@ describe('JWT Session', ()=>{
             cy.get(".action__submit").click();
             cy.wait(2000);
             cy.get("label[class='ng-star-inserted']").then(function(order) 
-            {
-                orderNumber = order.text()
-                cy.log(orderNumber) // | 645d6572568c3e9fb169ff4a |
+            {   // | 645d6572568c3e9fb169ff4a |
+                orderNumber = order.text().match(/[0-9a-z]+/) // regex to match only digits and letters lower case
+                cy.log(orderNumber) // 645d6572568c3e9fb169ff4a
             })
             cy.contains('CSV').click();
 
@@ -50,7 +50,7 @@ describe('JWT Session', ()=>{
                 expect(productName).to.equal(actualProductCSV)
 
                 const actualOrderCSV = csv[0]["Invoice Number"]
-                expect(orderNumber).to.equal(actualOrderCSV)
+                expect(orderNumber[0]).to.equal(actualOrderCSV)
             })
            
 
